@@ -1,0 +1,51 @@
+% Facts
+near(gondor, mordor).
+east(gondor, mordor).
+
+near(gondor, rohan).
+north(rohan, gondor).
+
+near(rohan, lothlorien).
+south(rohan, lothlorien).
+
+near(lothlorien, moria).
+east(lothlorien, moria).
+
+near(moria, high_pass).
+south(moria, high_pass).
+
+near(high_pass, rivendell).
+west(high_pass, rivendell).
+
+near(rivendell, bree).
+east(rivendell, bree).
+
+near(bree, shire).
+east(bree, shire).
+
+near(shire, bree).
+
+% Symmetry rules
+(north(X, Y)) => (south(Y, X)).
+(south(X, Y)) => (north(Y, X)).
+(east(X, Y)) => (west(Y, X)).
+(west(X, Y)) => (east(Y, X)).
+(near(X, Y)) => (near(Y, X)).
+
+% Transitivity rules
+(north(X, Y) & north(Y, Z)) => (north(X, Z)).
+(south(X, Y) & south(Y, Z)) => (south(X, Z)).
+(east(X, Y) & east(Y, Z)) => (east(X, Z)).
+(west(X, Y) & west(Y, Z)) => (west(X, Z)).
+
+% Directional movement rules
+(east(X, Y) & north(Y, Z)) => (north(X, Z)).
+(west(X, Y) & north(Y, Z)) => (north(X, Z)).
+(east(X, Y) & south(Y, Z)) => (south(X, Z)).
+(west(X, Y) & south(Y, Z)) => (south(X, Z)).
+
+% Queries to test the logic
+-east(mordor, shire).
+-south(mordor, shire).
+-north(mordor, shire).
+-west(mordor, shire).
