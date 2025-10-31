@@ -1,4 +1,4 @@
-# ITI0210
+# ITI0210 Masinõpe
 
 
 
